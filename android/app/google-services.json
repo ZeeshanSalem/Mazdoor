@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "1045972568110",
+    "firebase_url": "https://mazdoor-85465.firebaseio.com",
+    "project_id": "mazdoor-85465",
+    "storage_bucket": "mazdoor-85465.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045972568110:android:cb68ffb15ecd576e7c77bf",
+        "android_client_info": {
+          "package_name": "com.example.client_mazdoor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045972568110-8nkmstrj559ptiga2r9d6ol3n9g4oh8q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.client_mazdoor",
+            "certificate_hash": "3bd23482ba4522b7c76b1450926656348d436e64"
+          }
+        },
+        {
+          "client_id": "1045972568110-de8v3crgssd8muotudir7ekvn3j2rq52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC46d4sOk-6zmjmlXBrwVX6pmCzcryMmv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045972568110-de8v3crgssd8muotudir7ekvn3j2rq52.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1045972568110-to71er826cfkilbo43tcjt88sk0mjlno.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mazdoor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045972568110:android:bf4655a5711e509c7c77bf",
+        "android_client_info": {
+          "package_name": "com.example.mazdoor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045972568110-n63rr8pcgplb5f5te30kmv3t26ok107b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mazdoor",
+            "certificate_hash": "3bd23482ba4522b7c76b1450926656348d436e64"
+          }
+        },
+        {
+          "client_id": "1045972568110-de8v3crgssd8muotudir7ekvn3j2rq52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC46d4sOk-6zmjmlXBrwVX6pmCzcryMmv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045972568110-de8v3crgssd8muotudir7ekvn3j2rq52.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1045972568110-to71er826cfkilbo43tcjt88sk0mjlno.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mazdoor"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
