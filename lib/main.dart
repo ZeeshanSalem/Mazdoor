@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/Registration': (BuildContext context) =>UserProfile(),
         '/UserLocation' : (BuildContext context) => UserLocation(),
       },
-      home: CustomMap(), 
+      home: SplashScreen(), 
     );
   }
 }
