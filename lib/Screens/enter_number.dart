@@ -1,9 +1,5 @@
-import 'package:client_mazdoor/Gvariable.dart';
-import 'package:client_mazdoor/Screens/home.dart';
-import 'package:client_mazdoor/Screens/sign_In.dart';
-import 'package:client_mazdoor/Services/user_services.dart';
+import 'package:client_mazdoor/Gvariable.dart' as global;
 import 'package:client_mazdoor/Shares_Widget/header_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -179,7 +175,7 @@ class _EnterNumberState extends State<EnterNumber> {
   }
 
   signIn(AuthCredential credential) async {
-    sharedUserData = await SharedPreferences.getInstance();
+    global.sharedUserData = await SharedPreferences.getInstance();
     try {
       
       AuthResult authResult = await _auth.signInWithCredential(credential);
@@ -191,8 +187,8 @@ class _EnterNumberState extends State<EnterNumber> {
       if(authResult.additionalUserInfo.isNewUser){
         if (!mounted) return;
         setState(() {
-          userId = user.uid;
-          sharedUserData.setString("currentUserId", user.uid);
+          global.userId = user.uid;
+          global.sharedUserData.setString("currentUserId", user.uid);
         });
         // Firestore.instance.collection("Users_Info").document(user.uid).setData({
         //   "userPhone": userPhoneNumber,

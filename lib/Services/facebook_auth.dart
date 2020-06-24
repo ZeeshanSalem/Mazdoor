@@ -1,4 +1,5 @@
-import 'package:client_mazdoor/Screens/home.dart';
+import 'package:client_mazdoor/Screens/dashboard.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -20,7 +21,7 @@ class FacebookAuth{
       if( user != null){
        Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                        MaterialPageRoute(builder: (context) => DashBoard()),
                       );
       }
       break;

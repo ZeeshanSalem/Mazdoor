@@ -23,7 +23,7 @@ class _UserProfileState extends State<UserProfile> {
   Future getImage()  async{
       var image = await ImagePicker.pickImage(source: ImageSource.gallery);
        setState(() {
-         _profileImage = image;
+        _profileImage = image;
        });
     }
     
@@ -31,14 +31,21 @@ class _UserProfileState extends State<UserProfile> {
       String fileName = basename(_profileImage.path);
       StorageReference firebaseStorageRef = FirebaseStorage.instance.ref().child(fileName);
       StorageUploadTask task = firebaseStorageRef.putFile(_profileImage);
+      
       StorageTaskSnapshot storageTaskSnapshot = await task.onComplete;
       var imageUrl = await storageTaskSnapshot.ref.getDownloadURL();
+      
+      setState(() {
+        global.userImage = imageUrl.toString();
+        this.userImageUrl = imageUrl.toString();
+      });
       //UserServices().addProfileImage(userImageUrl);
       // //userImageUrl = await (await task.onComplete).ref.getDownloadURL();
       // setState(() {
       //   userImageUrl = imageUrl.toString();
       // });
-      this.userImageUrl = imageUrl.toString();
+      //this.userImageUrl = imageUrl.toString();
+     
     }
 
     _validityState() async {
@@ -85,7 +92,7 @@ class _UserProfileState extends State<UserProfile> {
                     children:<Widget>[
                       CircleAvatar(
                         radius: 100,
-                        backgroundColor: Colors.green[100],
+                        backgroundColor: Colors.green[300],
                         child: ClipOval(
                           child: SizedBox(
                             width:180.0,
@@ -215,12 +222,14 @@ class _UserProfileState extends State<UserProfile> {
                         child: RaisedButton(
                           onPressed: (){
                             _validityState();
-                            uploadPic().then((value) => {
-                            setState(() {
-                              global.userImage = userImageUrl; 
-                            }),
-                            print("SetState"),
-                            }).then((value) => {
+                            uploadPic()
+                            // .then((value) => {
+                            // setState(() {
+                            //   global.userImage = userImageUrl; 
+                            // }),
+                            // print("SetState"),
+                            // })
+                            .then((value) => {
                             UserServices().addPhoneNumbertoFirestoreCollection(context),
                             print("UserServices")
                             });
@@ -251,12 +260,12 @@ class MyClipper extends CustomClipper<Path>{
   @override
   Path getClip(Size size) {
     var path = Path();
-    path.lineTo(0.0, size.height-100);
+    path.lineTo(0.0, size.height - 100);
     path.quadraticBezierTo(
     size.width / 2, 
     size.height,
     size.width,
-    size.height - 100
+    size.height - 100,
     );
     path.lineTo(size.width, 0.0);
     path.close();

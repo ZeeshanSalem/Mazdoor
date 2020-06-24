@@ -1,12 +1,11 @@
 import 'dart:async';
-import 'package:client_mazdoor/Gvariable.dart';
-import 'package:client_mazdoor/Screens/home.dart';
+import 'package:client_mazdoor/Screens/showAddress.dart';
 import 'package:client_mazdoor/Screens/sign_In.dart';
 import 'package:client_mazdoor/Services/user_services.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -65,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
      auth.currentUser().then((user){
        if( user != null){
          Navigator.pushAndRemoveUntil(context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => UserLocation()),
            (Route<dynamic> route) => false);
        } else {
          Navigator.pushAndRemoveUntil(context,

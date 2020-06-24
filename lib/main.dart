@@ -1,13 +1,10 @@
+import 'package:client_mazdoor/Screens/custom_map.dart';
 import 'package:client_mazdoor/Screens/dashboard.dart';
-import 'package:client_mazdoor/Screens/home.dart';
 import 'package:client_mazdoor/Screens/profile.dart';
 import 'package:client_mazdoor/Screens/showAddress.dart';
 import 'package:client_mazdoor/Screens/sign_In.dart';
 import 'package:client_mazdoor/Screens/splash_screen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'Screens/enter_number.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,13 +20,13 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.blue[800],
       ),
       routes: <String , WidgetBuilder>{
-        '/home': (BuildContext context) => HomeScreen(),
+        '/home': (BuildContext context) => DashBoard(),
         '/SignIn': (BuildContext context) => SignIn(),
         '/SplashScreen': (BuildContext context) => SplashScreen(),
         '/Registration': (BuildContext context) =>UserProfile(),
         '/UserLocation' : (BuildContext context) => UserLocation(),
       },
-      home: SplashScreen(), 
+      home: CustomMap(), 
     );
   }
 }

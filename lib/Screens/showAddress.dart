@@ -22,7 +22,7 @@ class _UserLocationState extends State<UserLocation> {
   SharedPreferences sharedUserData ;
   Placemark place;
   static LatLng _initialPosition;
-  LatLng _lastPosition = _initialPosition;
+  LatLng lastPosition = _initialPosition;
   String presentAddress;
   String userName;
 
@@ -34,7 +34,7 @@ class _UserLocationState extends State<UserLocation> {
 
   void _onCameraMove(CameraPosition position){
     setState(() {
-      _lastPosition = position.target;
+      lastPosition = position.target;
     });
   }
 

@@ -66,7 +66,29 @@ class UserServices{
     var userInfo = new UserUpdateInfo();
     userInfo.photoUrl = picUrl;
     var auth = await FirebaseAuth.instance.currentUser(); 
-    auth.updateProfile(userInfo).then((value) => {null});
+    auth.updateProfile(userInfo).then((value){
+      FirebaseAuth.instance.currentUser().then((user) {
+        Firestore.instance.collection("Users_Info")
+        .where('uid', isEqualTo: user.uid)
+        .getDocuments()
+        .then((doc) {
+          Firestore.instance.document("/Users_Info/${doc.documents[0].documentID}")
+          .updateData({'userImage' : picUrl}).then((value) {
+            print("Updated pic");
+          }).catchError((onError){
+            print("$onError");
+          });
+        })
+        .catchError((e){
+          print("$e");
+        });
+      })
+      .catchError((onError){
+        print("$onError");
+      });
+    }).catchError((onError){
+      print("$onError");
+    });
   }
 
   //Sign out

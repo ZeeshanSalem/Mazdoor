@@ -1,8 +1,8 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:client_mazdoor/Animation_method/delay_animation.dart';
-import 'package:client_mazdoor/Gvariable.dart';
+
 import 'package:client_mazdoor/Screens/enter_number.dart';
-import 'package:client_mazdoor/Screens/home.dart';
+
 import 'package:client_mazdoor/Services/user_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

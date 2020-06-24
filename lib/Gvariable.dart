@@ -1,4 +1,5 @@
 
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 String userName;
@@ -11,6 +12,7 @@ String userId;
 String userImage;
 
 String userType;
+
 
 bool isLocationData = false;
 

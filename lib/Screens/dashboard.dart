@@ -1,5 +1,5 @@
+import 'package:client_mazdoor/Screens/sideMenu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,8 +24,9 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.access_alarm),
-        automaticallyImplyLeading: true,
+        
+        centerTitle: true,
+        //automaticallyImplyLeading: true,
         title: Text("MAZDOOR",
         style: TextStyle(fontSize: 40.0, fontFamily: "Signatra", )),
         shape: RoundedRectangleBorder(
@@ -42,16 +43,20 @@ class _DashBoardState extends State<DashBoard> {
           preferredSize: Size.fromHeight(50.0),
         ),
       ),
+      
+      drawer: SideMenu(),
+
       backgroundColor: Colors.green[50],
       body: StreamBuilder(
         stream: Firestore.instance.collection("All_Engineering").snapshots(),
         builder: (context, snapshot){
-          return GridView.builder(
+          if (snapshot.hasData) {
+            return GridView.builder(
             itemCount: snapshot.data.documents.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), 
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index){
-              DocumentSnapshot all_Engineering = snapshot.data.documents[index];
+              DocumentSnapshot allEngineering = snapshot.data.documents[index];
               return GestureDetector(
                 child: Card(
                   shadowColor: Theme.of(context).primaryColor,
@@ -64,10 +69,10 @@ class _DashBoardState extends State<DashBoard> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image.network(all_Engineering["image"],
+                        Image.network(allEngineering["image"],
                         width: 300.0,height: 100.0,),
 
-                        Text(all_Engineering["title"],
+                        Text(allEngineering["title"],
                         style: TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
@@ -80,6 +85,16 @@ class _DashBoardState extends State<DashBoard> {
               );
             } 
             );
+          } else {
+            return Center(
+              widthFactor: double.maxFinite,
+              heightFactor: double.maxFinite,
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.lightGreenAccent,
+              ),
+            );
+          }
+          
         },
         ),
 
