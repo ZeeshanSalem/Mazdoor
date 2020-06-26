@@ -1,5 +1,6 @@
 import 'package:client_mazdoor/Screens/custom_map.dart';
 import 'package:client_mazdoor/Screens/dashboard.dart';
+import 'package:client_mazdoor/Screens/map.dart';
 import 'package:client_mazdoor/Screens/profile.dart';
 import 'package:client_mazdoor/Screens/showAddress.dart';
 import 'package:client_mazdoor/Screens/sign_In.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/SplashScreen': (BuildContext context) => SplashScreen(),
         '/Registration': (BuildContext context) =>UserProfile(),
         '/UserLocation' : (BuildContext context) => UserLocation(),
+        '/userMap' : (BuildContext context) => CustomMap(),
       },
       home: SplashScreen(), 
     );

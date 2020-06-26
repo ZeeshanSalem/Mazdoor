@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:client_mazdoor/Screens/dashboard.dart';
 import 'package:client_mazdoor/Screens/showAddress.dart';
 import 'package:client_mazdoor/Screens/sign_In.dart';
 import 'package:client_mazdoor/Services/user_services.dart';
@@ -64,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
      auth.currentUser().then((user){
        if( user != null){
          Navigator.pushAndRemoveUntil(context,
-          MaterialPageRoute(builder: (context) => UserLocation()),
+          MaterialPageRoute(builder: (context) => DashBoard()),
            (Route<dynamic> route) => false);
        } else {
          Navigator.pushAndRemoveUntil(context,

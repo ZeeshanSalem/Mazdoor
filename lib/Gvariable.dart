@@ -10,14 +10,14 @@ String userAge;
 String userPhoneNumber;
 String userId;
 String userImage;
-
+String userAddress;
 String userType;
 
 
 bool isLocationData = false;
 
-String userLatitude;
-String userLongitude;
+double userLatitude;
+double userLongitude;
 String userLocationName;
 
 SharedPreferences sharedUserData;

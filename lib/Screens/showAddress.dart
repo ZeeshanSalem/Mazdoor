@@ -20,11 +20,12 @@ class _UserLocationState extends State<UserLocation> {
 
   GoogleMapController mapController;
   SharedPreferences sharedUserData ;
-  Placemark place;
+  //Placemark place;
   static LatLng _initialPosition;
   LatLng lastPosition = _initialPosition;
   String presentAddress;
   String userName;
+  List<Placemark> placemark;
 
   void onCreated(GoogleMapController controller){
     setState(() {
@@ -45,7 +46,7 @@ class _UserLocationState extends State<UserLocation> {
           position: LatLng(_position.latitude, _position.longitude),
           infoWindow: InfoWindow(
             title: "Your are Here",
-            snippet: presentAddress,
+            // snippet: presentAddress,
             
           ))].toSet();
 
@@ -56,15 +57,19 @@ class _UserLocationState extends State<UserLocation> {
     
     _geolocator =  Geolocator() ..forceAndroidLocationManager;
     LocationOptions locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
-    _positionStream =  _geolocator.getPositionStream(locationOptions).listen((Position position) {
+    _positionStream =  _geolocator.getPositionStream(locationOptions).listen((Position position) async {
      //List<Placemark> placemark =  Geolocator().placemarkFromPosition(position) as List<Placemark>;
+      // placemark = await _geolocator.placemarkFromCoordinates(position.latitude, position.longitude);
       setState(() {
         _position = position;
         _initialPosition = LatLng(position.latitude, position.longitude);
-
-        //presentAddress = placemark[0].subLocality.toString();
-        global.userLatitude = position.latitude.toString();
-        global.userLongitude = position.longitude.toString();
+        
+        // presentAddress = placemark[0].name.toString() + ", " +
+        //  placemark[0].locality.toString() +
+        //  ", Postal Code:" + placemark[0].postalCode.toString();
+        global.userAddress = presentAddress.toString();
+        global.userLatitude = position.latitude;
+        global.userLongitude = position.longitude;
       });
      });
   }

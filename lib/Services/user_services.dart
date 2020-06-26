@@ -42,6 +42,7 @@ class UserServices{
     sharedUserData = await SharedPreferences.getInstance();
     String currentUserId = await UserID().functionUserId();
     Firestore.instance.collection("Users_Info").document(currentUserId).setData({
+      "userAddress" : global.userAddress,
       "userLatitude" : global.userLatitude,
       "userLongitude" : global.userLongitude,
     },

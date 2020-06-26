@@ -58,6 +58,11 @@ class _DashBoardState extends State<DashBoard> {
             itemBuilder: (context, index){
               DocumentSnapshot allEngineering = snapshot.data.documents[index];
               return GestureDetector(
+                onTap: (){
+                  if(allEngineering["title"] == "Construction"){
+                    Navigator.of(context).pushReplacementNamed('/userMap');
+                  }
+                },
                 child: Card(
                   shadowColor: Theme.of(context).primaryColor,
                   margin: const EdgeInsets.all(10.0),

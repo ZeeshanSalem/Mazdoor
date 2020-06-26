@@ -73,11 +73,11 @@ class _SideMenuState extends State<SideMenu> {
                           child: SizedBox(
                             width: 180.0,
                             height: 180.0,
-                            child : global.userImage == "" ? 
+                            child : global.userImage != null ?  Image.network(global.userImage, fit: BoxFit.fill,): 
                             _profileImage != null ? Image.file(
                               _profileImage,
                               fit: BoxFit.fill,
-                            ) : Icon(Icons.person, color: Colors.black,size: 50,) : Image.network(global.userImage, fit: BoxFit.fill,),
+                            ) : Icon(Icons.person, color: Colors.black,size: 50,),
 
                           )
                         ),
