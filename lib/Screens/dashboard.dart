@@ -60,7 +60,7 @@ class _DashBoardState extends State<DashBoard> {
               return GestureDetector(
                 onTap: (){
                   if(allEngineering["title"] == "Construction"){
-                    Navigator.of(context).pushReplacementNamed('/userMap');
+                    Navigator.of(context).pushNamed('/userMap');
                   }
                 },
                 child: Card(

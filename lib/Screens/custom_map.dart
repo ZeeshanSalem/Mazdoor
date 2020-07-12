@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:client_mazdoor/Gvariable.dart' as global;
+import 'package:client_mazdoor/Services/user_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -43,8 +44,10 @@ class _CustomMapState extends State<CustomMap> {
         global.userAddress = presentAddress.toString();
         global.userLatitude = position.latitude;
         global.userLongitude = position.longitude;
+        //UserServices().userLocationStore();
       });
     });
+    //UserServices().userLocationStore();
   }
 
   void onCreated(GoogleMapController controller){
@@ -62,7 +65,7 @@ class _CustomMapState extends State<CustomMap> {
   // Add Marker
 
   populateClient()  {
-    Firestore.instance.collection("Users_Info").getDocuments()
+    Firestore.instance.collection("Labors_Info").getDocuments()
     .then((docs) {
       if(docs.documents.isNotEmpty){
         for(int i =0; i < docs.documents.length; i++){
@@ -85,6 +88,7 @@ class _CustomMapState extends State<CustomMap> {
 //         }else {
 //            for(int i = 0; i < snapshot.data.documents.length; i++){
 //             DocumentSnapshot labors = snapshot.data.document[i];
+             
 //              initMarker(labors.data[i],labors.documentID[i]);
 //           }
 //         }
@@ -98,9 +102,9 @@ class _CustomMapState extends State<CustomMap> {
     final Marker marker = Marker(
       markerId: markerId,
       position: LatLng(
-        request["userLatitude"], request["userLongitude"]),
-      infoWindow: InfoWindow( title : request["userName"],
-      snippet: request["userAddress"].toString(),
+        request["laborLatitude"], request["laborLongitude"]),
+      infoWindow: InfoWindow( title : request["laborType"].toString(),
+      snippet: request["laborAddress"].toString(),
       )
         );
         setState(() {
@@ -111,7 +115,7 @@ class _CustomMapState extends State<CustomMap> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     _getlocation();
     //populateLabor();
     populateClient();
@@ -148,7 +152,13 @@ class _CustomMapState extends State<CustomMap> {
               myLocationEnabled: true,
               markers: Set<Marker>.of(markers.values),
               ),
-        )
+        ),
+         Align(
+           alignment:Alignment.bottomCenter,
+           child: FlatButton(
+             onPressed: () => UserServices().userLocationStore(), 
+             child: Text("Proceed"))
+         )
       ],
     );
   }

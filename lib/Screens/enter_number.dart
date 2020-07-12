@@ -51,7 +51,7 @@ class _EnterNumberState extends State<EnterNumber> {
              Padding(
               padding: EdgeInsets.only( top: 25.0,left: 15.0, right: 20.0),
                 child: TextFormField(
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                      hintText: "+92 3xx xxxxxxx",
                     icon: Icon(Icons.phone),
@@ -160,8 +160,9 @@ class _EnterNumberState extends State<EnterNumber> {
                   _auth.currentUser().then((user) {
                     if (user != null) {
                       Navigator.of(context).pop();
-                      // Navigator.of(context).pushReplacementNamed('/home');
-                      Navigator.of(context).pushReplacementNamed('/UserLocation');
+                       Navigator.pushNamed(context, "/home");
+                       //Navigator.of(context).pushReplacementNamed('/home');
+                      //Navigator.of(context).pushReplacementNamed('/UserLocation');
                     } else {
                       signInWithOTP(smsCode, verificationId);
                       //signIn();

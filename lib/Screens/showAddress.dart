@@ -83,7 +83,7 @@ class _UserLocationState extends State<UserLocation> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState(); 
     _getLocation();
     readData();
@@ -95,7 +95,7 @@ class _UserLocationState extends State<UserLocation> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     _positionStream.cancel();
   }

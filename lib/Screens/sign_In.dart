@@ -17,7 +17,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> with SingleTickerProviderStateMixin {
   final int delayedAmount = 500;
-  double _scale;
+  double scale;
   AnimationController _controller;
   FacebookLogin fbLogin = new FacebookLogin();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -41,7 +41,7 @@ class _SignInState extends State<SignIn> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    _scale = 1 - _controller.value;
+    scale = 1 - _controller.value;
     
     return Scaffold(
       

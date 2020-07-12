@@ -47,7 +47,7 @@ class UserServices{
       "userLongitude" : global.userLongitude,
     },
     merge: true,
-    );
+    ).then((value) => print("your New Location Is store"));
   }
 
   //uploadProfile Pic
