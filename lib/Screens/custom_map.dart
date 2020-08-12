@@ -12,7 +12,6 @@ class CustomMap extends StatefulWidget {
 }
 
 class _CustomMapState extends State<CustomMap> {
-  
   // For getting device Location
   Geolocator geolocator;
   Position positions;
@@ -30,17 +29,23 @@ class _CustomMapState extends State<CustomMap> {
 
   // method get position
   void _getlocation() {
-    geolocator = Geolocator() ..forceAndroidLocationManager;
-    LocationOptions locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
-    _positioStream =  geolocator.getPositionStream(locationOptions).listen((Position position) async{
-      placemark = await geolocator.placemarkFromCoordinates(position.latitude, position.longitude); 
+    geolocator = Geolocator()..forceAndroidLocationManager;
+    LocationOptions locationOptions =
+        LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
+    _positioStream = geolocator
+        .getPositionStream(locationOptions)
+        .listen((Position position) async {
+      placemark = await geolocator.placemarkFromCoordinates(
+          position.latitude, position.longitude);
       setState(() {
         positions = position;
         initialPosition = LatLng(positions.latitude, positions.longitude);
-        
-        presentAddress = placemark[0].name.toString() + ", " +
-         placemark[0].locality.toString() +
-         ", Postal Code:" + placemark[0].postalCode.toString();
+
+        presentAddress = placemark[0].name.toString() +
+            ", " +
+            placemark[0].locality.toString() +
+            ", Postal Code:" +
+            placemark[0].postalCode.toString();
         global.userAddress = presentAddress.toString();
         global.userLatitude = position.latitude;
         global.userLongitude = position.longitude;
@@ -50,13 +55,13 @@ class _CustomMapState extends State<CustomMap> {
     //UserServices().userLocationStore();
   }
 
-  void onCreated(GoogleMapController controller){
+  void onCreated(GoogleMapController controller) {
     setState(() {
       mapController = controller;
     });
   }
 
-  void onCameraMove(CameraPosition position){
+  void onCameraMove(CameraPosition position) {
     setState(() {
       lastPosition = position.target;
     });
@@ -64,11 +69,10 @@ class _CustomMapState extends State<CustomMap> {
 
   // Add Marker
 
-  populateClient()  {
-    Firestore.instance.collection("Labors_Info").getDocuments()
-    .then((docs) {
-      if(docs.documents.isNotEmpty){
-        for(int i =0; i < docs.documents.length; i++){
+  populateClient() {
+    Firestore.instance.collection("Labors_Info").getDocuments().then((docs) {
+      if (docs.documents.isNotEmpty) {
+        for (int i = 0; i < docs.documents.length; i++) {
           initMarker(docs.documents[i].data, docs.documents[i].documentID);
         }
       } else {
@@ -76,8 +80,7 @@ class _CustomMapState extends State<CustomMap> {
       }
     });
     print("BBBBBBB");
-    
- }
+  }
 
 //  populateLabor(){
 //     return StreamBuilder (
@@ -88,34 +91,32 @@ class _CustomMapState extends State<CustomMap> {
 //         }else {
 //            for(int i = 0; i < snapshot.data.documents.length; i++){
 //             DocumentSnapshot labors = snapshot.data.document[i];
-             
+
 //              initMarker(labors.data[i],labors.documentID[i]);
 //           }
 //         }
 //       });
 //   }
 
-  void initMarker(request, requestId){
+  void initMarker(request, requestId) {
     var markerIdVal = requestId;
     final MarkerId markerId = MarkerId(markerIdVal);
     //Creating a new Marker
     final Marker marker = Marker(
-      markerId: markerId,
-      position: LatLng(
-        request["laborLatitude"], request["laborLongitude"]),
-      infoWindow: InfoWindow( title : request["laborType"].toString(),
-      snippet: request["laborAddress"].toString(),
-      )
-        );
-        setState(() {
-          markers[markerId] = marker;
-          print(markerId);
-        });
+        markerId: markerId,
+        position: LatLng(request["laborLatitude"], request["laborLongitude"]),
+        infoWindow: InfoWindow(
+          title: request["laborType"].toString(),
+          snippet: request["laborAddress"].toString(),
+        ));
+    setState(() {
+      markers[markerId] = marker;
+      print(markerId);
+    });
   }
 
   @override
   void initState() {
-    
     _getlocation();
     //populateLabor();
     populateClient();
@@ -123,7 +124,7 @@ class _CustomMapState extends State<CustomMap> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     _positioStream.cancel();
     super.dispose();
   }
@@ -133,32 +134,32 @@ class _CustomMapState extends State<CustomMap> {
     return Stack(
       children: <Widget>[
         Container(
-          child: initialPosition == null? Center(
-            heightFactor: 100.0,
-            widthFactor: 100.0,
-            child: CircularProgressIndicator(
-              value: 50.0,
-              backgroundColor: Theme.of(context).primaryColor,
-              
-            ),
-          ): GoogleMap(
-            onMapCreated: onCreated,
-            initialCameraPosition: CameraPosition(
-              target: LatLng(positions.latitude, positions.longitude),
-              zoom: 16.0,
-              ),
-              onCameraMove: onCameraMove,
-              compassEnabled: true,
-              myLocationEnabled: true,
-              markers: Set<Marker>.of(markers.values),
-              ),
+          child: initialPosition == null
+              ? Center(
+                  heightFactor: 100.0,
+                  widthFactor: 100.0,
+                  child: CircularProgressIndicator(
+                    value: 50.0,
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
+                )
+              : GoogleMap(
+                  onMapCreated: onCreated,
+                  initialCameraPosition: CameraPosition(
+                    target: LatLng(positions.latitude, positions.longitude),
+                    zoom: 16.0,
+                  ),
+                  onCameraMove: onCameraMove,
+                  compassEnabled: true,
+                  myLocationEnabled: true,
+                  markers: Set<Marker>.of(markers.values),
+                ),
         ),
-         Align(
-           alignment:Alignment.bottomCenter,
-           child: FlatButton(
-             onPressed: () => UserServices().userLocationStore(), 
-             child: Text("Proceed"))
-         )
+        Align(
+            alignment: Alignment.bottomCenter,
+            child: FlatButton(
+                onPressed: () => UserServices().userLocationStore(),
+                child: Text("Proceed")))
       ],
     );
   }

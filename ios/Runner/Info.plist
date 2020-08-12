@@ -29,16 +29,17 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb626816194569359</string>
+				<string>fb3313742902009434</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>FacebookAppID</key>
-	<string>626816194569359</string>
+	<string>3313742902009434</string>
 	<key>FacebookDisplayName</key>
 	<string>Client_Mazdoor</string>
+	
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

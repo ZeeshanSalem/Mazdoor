@@ -19,16 +19,15 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.green[200],
         accentColor: Colors.blue[800],
       ),
-      routes: <String , WidgetBuilder>{
+      routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => DashBoard(),
         '/SignIn': (BuildContext context) => SignIn(),
         '/SplashScreen': (BuildContext context) => SplashScreen(),
-        '/Registration': (BuildContext context) =>UserProfile(),
-        '/UserLocation' : (BuildContext context) => UserLocation(),
-        '/userMap' : (BuildContext context) => CustomMap(),
+        '/Registration': (BuildContext context) => UserProfile(),
+        '/UserLocation': (BuildContext context) => UserLocation(),
+        '/userMap': (BuildContext context) => CustomMap(),
       },
-      home: DashBoard(), 
+      home: DashBoard(),
     );
   }
 }
-
