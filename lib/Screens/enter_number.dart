@@ -33,6 +33,13 @@ class _EnterNumberState extends State<EnterNumber> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pushMessagingToken();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: header(context, isAppTitle: true),
@@ -94,7 +101,8 @@ class _EnterNumberState extends State<EnterNumber> {
                     ),
                   ),
                   onPressed: () {
-                    verifyPhone().then((value) => pushMessagingToken());
+                    verifyPhone();
+                    // .then((value) => pushMessagingToken());
                   },
                 ),
               ),

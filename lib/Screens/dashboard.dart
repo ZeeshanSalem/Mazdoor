@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:client_mazdoor/Gvariable.dart' as global;
 
 class DashBoard extends StatefulWidget {
   @override
@@ -12,16 +13,7 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   //FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
-  List<String> events = [
-    "Construction",
-    "Plumber",
-    "Electrician",
-    "Carpentry",
-    "Mechanic",
-    "Welding",
-    "Sweeper",
-    "Chef"
-  ];
+  List<String> events = [];
 
   // Notification
   // _configureFirebaseListner() {
@@ -84,10 +76,58 @@ class _DashBoardState extends State<DashBoard> {
                 itemBuilder: (context, index) {
                   DocumentSnapshot allEngineering =
                       snapshot.data.documents[index];
+                  //events.addAll(allEngineering["title"]);
+                  //print(events);
                   return GestureDetector(
                       onTap: () {
                         if (allEngineering["title"] == "Construction") {
-                          Navigator.of(context).pushNamed('/userMap');
+                          global.laborType = "Construction";
+                          // events
+                          //     .where((element) => element == "Construction")
+                          //     .toString();
+                          Navigator.of(context).pushNamed('/mapScreen');
+                        } else if (allEngineering["title"] == "Electrician") {
+                          global.laborType = "Electrician";
+                          // events
+                          //     .where((element) => element == "Construction")
+                          //     .toString();
+                          Navigator.of(context).pushNamed('/mapScreen');
+                        } else if (allEngineering["title"] == "Mechanic") {
+                          global.laborType = "Mechanic";
+                          // events
+                          //     .where((element) => element == "Construction")
+                          //     .toString();
+                          Navigator.of(context).pushNamed('/mapScreen');
+                        } else if (allEngineering["title"] == "Chef") {
+                          global.laborType = "Chef";
+                          // events
+                          //     .where((element) => element == "Construction")
+                          //     .toString();
+                          Navigator.of(context).pushNamed('/mapScreen');
+                        } else if (allEngineering["title"] == "Sweeper") {
+                          global.laborType = "Sweeper";
+                          // events
+                          //     .where((element) => element == "Construction")
+                          //     .toString();
+                          Navigator.of(context).pushNamed('/mapScreen');
+                        } else if (allEngineering["title"] == "Carpentry") {
+                          global.laborType = "Carpentry";
+                          // events
+                          //     .where((element) => element == "Construction")
+                          //     .toString();
+                          Navigator.of(context).pushNamed('/mapScreen');
+                        } else if (allEngineering["title"] == "Plumber") {
+                          global.laborType = "Plumber";
+                          // events
+                          //     .where((element) => element == "Construction")
+                          //     .toString();
+                          Navigator.of(context).pushNamed('/mapScreen');
+                        } else if (allEngineering["title"] == "Welder") {
+                          global.laborType = "Welder";
+                          // events
+                          //     .where((element) => element == "Construction")
+                          //     .toString();
+                          Navigator.of(context).pushNamed('/mapScreen');
                         }
                       },
                       child: Card(
@@ -130,33 +170,33 @@ class _DashBoardState extends State<DashBoard> {
         },
       ),
 
-      bottomNavigationBar: BottomNavigationBar(
-        selectedIconTheme: IconThemeData(
-          color: Theme.of(context).accentColor,
-          opacity: 1.0,
-          size: 32.0,
-        ),
-        unselectedIconTheme: IconThemeData(
-          color: Colors.black,
-          opacity: 1.0,
-          size: 28.0,
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Business'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   selectedIconTheme: IconThemeData(
+      //     color: Theme.of(context).accentColor,
+      //     opacity: 1.0,
+      //     size: 32.0,
+      //   ),
+      //   unselectedIconTheme: IconThemeData(
+      //     color: Colors.black,
+      //     opacity: 1.0,
+      //     size: 28.0,
+      //   ),
+      //   backgroundColor: Theme.of(context).primaryColor,
+      //   items: const <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       title: Text('Home'),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.business),
+      //       title: Text('Business'),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.school),
+      //       title: Text('School'),
+      //     ),
+      //   ],
+      // ),
 
       //   bottomNavigationBar: CupertinoTabBar(
       //     items: [

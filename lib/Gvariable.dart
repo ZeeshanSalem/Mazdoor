@@ -23,7 +23,7 @@ SharedPreferences sharedUserData;
 String laborName;
 String laborPhoneNumer;
 String laborPasswor;
-String labortype;
+String laborType;
 String laborGender;
 
 String workType;

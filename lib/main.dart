@@ -1,9 +1,11 @@
 import 'package:client_mazdoor/Screens/custom_map.dart';
 import 'package:client_mazdoor/Screens/dashboard.dart';
+import 'package:client_mazdoor/Screens/laborList.dart';
 import 'package:client_mazdoor/Screens/profile.dart';
 import 'package:client_mazdoor/Screens/showAddress.dart';
 import 'package:client_mazdoor/Screens/sign_In.dart';
 import 'package:client_mazdoor/Screens/splash_screen.dart';
+import 'package:client_mazdoor/Screens/userMap.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -26,8 +28,9 @@ class MyApp extends StatelessWidget {
         '/Registration': (BuildContext context) => UserProfile(),
         '/UserLocation': (BuildContext context) => UserLocation(),
         '/userMap': (BuildContext context) => CustomMap(),
+        '/mapScreen': (BuildContext context) => UserMap(),
       },
-      home: DashBoard(),
+      home: SplashScreen(),
     );
   }
 }
